@@ -2,7 +2,7 @@
 # Mayoral Kids Chic Script
 
 <p align="center">
-    <img alt="logo" src="https://cdn.shopify.com/s/files/1/0297/6772/9245/files/mayoral-baby-chic_360x.png?v=158932103" width="150" />
+    <img alt="logo" src="https://cdn.shopify.com/s/files/1/0297/6772/9245/files/mayoral-baby-chic_360x.png?v=158932103" width="220" />
 </p>
 
 
