@@ -1,0 +1,21 @@
+{
+  "name": "mayoral-kidschic",
+  "version": "1.0.0",
+  "description": "Script to export Mayoral products and fetch images from Cloudinary and prepare Shopify csv file.",
+  "main": "script.js",
+  "scripts": {
+    "start": "node script.js",
+    "get-urls": "source config.sh && node get-images-url.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonachkar/mayoral-kidschic.git"
+  },
+  "author": "Simon Achkar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simonachkar/mayoral-kidschic/issues"
+  },
+  "homepage": "https://github.com/simonachkar/mayoral-kidschic#readme"
+}
