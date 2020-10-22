@@ -20,6 +20,9 @@ Script to export Mayoral products and fetch images from Cloudinary and prepare S
 - Upload all images to Cloudinary 
 - Get the API credentials from Cloudinart
 
+### Run `npm i` 
+Of course...
+
 ### Run `npm run get-urls` 
 **Before doing that make sure to add the correspondant values in a new file called `config.sh`**
 
