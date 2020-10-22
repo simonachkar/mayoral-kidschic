@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/simonachkar/mayoral-kidschic/issues"
   },
-  "homepage": "https://github.com/simonachkar/mayoral-kidschic#readme"
+  "homepage": "https://github.com/simonachkar/mayoral-kidschic#readme",
+  "dependencies": {
+    "cloudinary": "^1.23.0"
+  }
 }
