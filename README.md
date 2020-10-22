@@ -18,21 +18,21 @@ Script to export Mayoral products and fetch images from Cloudinary and prepare S
 ### Upload Images to Cloudinary
 - Get all images from the Mayoral Admin Panel
 - Upload all images to Cloudinary 
-- Get the API credentials from Cloudinart
+- Get the API credentials from Cloudinary
 
 ### Run `npm i` 
 Of course...
 
 ### Run `npm run get-urls` 
-**Before doing that make sure to add the correspondant values in a new file called `config.sh`**
+**Before doing that make sure to add the corresponding values in a new file called `config.sh`**
 
 This will get all urls and save them into a text file
 
 ### Run `npm run start`
 This will run the script and create a file `out.csv` that is suitable for Shopify product import
 
-### Manually put quantity
-As for now this step can't be automated, you need to get the quantity manually from Mayoral.
+### Manually add quantities
+As for now, this step can't be automated, you need to get the quantity manually from Mayoral.
 
 A good way that works is to use `CodeColorSize` column and sort it by `CodeColorSize` this will put the same products next to each others.
 
