@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/simonachkar/mayoral-kidschic#readme",
   "dependencies": {
-    "cloudinary": "^1.23.0"
+    "cloudinary": "^1.23.0",
+    "csv-parser": "^2.3.3",
+    "slugify": "^1.4.5"
   }
 }

@@ -31,5 +31,5 @@ This will run the script and create a file `out.csv` that is suitable for Shopif
 ### Manually put quantity
 As for now this step can't be automated, you need to get the quantity manually from Mayoral.
 
-A good way that works is to use `id` column and sort it by `id` this will put the same products next to each others.
+A good way that works is to use `CodeColorSize` column and sort it by `CodeColorSize` this will put the same products next to each others.
 
