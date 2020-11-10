@@ -14,6 +14,15 @@ Script to export Mayoral products and fetch images from Cloudinary and prepare S
 - Go to the Mayoral Admin Panel
 - Get the csv file for the order wanted
 - Place the file at the root of this project and call it `data.csv`
+- Make sure the seperators are `,` and the header of the csv file is set properly
+- The file should look something like this
+```
+Style code,Color code,Size,Family,Subfamily,Color name,Style description,Cost Price Barcode,Size key 
+00030,025,6,3C,,Dark,Basic regular fit trousers,01530,8445054297297,60
+00030,025,9,3C,,Dark,Basic regular fit trousers,01530,8445054297303,60
+00030,025,12,3C,,Dark,Basic regular fit trousers,01530,8445054297310,60
+00030,025,18,3C,,Dark,Basic regular fit trousers,01530,8445054297327,60
+```
 
 ### Upload Images to Cloudinary
 - Get all images from the Mayoral Admin Panel

@@ -67,116 +67,119 @@ const main = (collection) => {
       let prevHandle = "";
 
       results.map(async (product) => {
-        // console.log(product);
-        const id = product["Style code"].replace(/"/g, "");
-        const barcode = product["Barcode"].replace(/"/g, "");
-        let name = product["Style description"].replace(/"/g, "");
-        const size = product["Size"].replace(/"/g, "");
-        const color = product["Color name"].replace(/"/g, "");
-        const colorCode = product["Color code"].replace(/"/g, "");
-        const price = fixPrice(product["Cost Price"].replace(/"/g, ""));
-        const sizeKey = product["Size key "].replace(/"/g, "");
-        const family = product["Family"].replace(/"/g, "");
-        let tags =
-          capitalize(name.split(" ")[name.split(" ").length - 1]) +
-          `,${collection}`;
+        try {
+          const id = product["Style Code"].replace(/"/g, "");
+          const barcode = product["Barcode"].replace(/"/g, "");
+          let name = product["Style description"].replace(/"/g, "");
+          const size = product["Size"].replace(/"/g, "");
+          const color = product["Color name"].replace(/"/g, "");
+          const colorCode = product["Color code"].replace(/"/g, "");
+          const price = fixPrice(product["Cost Price"].replace(/"/g, ""));
+          const sizeKey = product["Size key "].replace(/"/g, "");
+          const family = product["Family"].replace(/"/g, "");
+          let tags =
+            capitalize(name.split(" ")[name.split(" ").length - 1]) +
+            `,${collection}`;
 
-        let description = name.replace(/"/g, "");
+          let description = name.replace(/"/g, "");
 
-        switch (family[0]) {
-          case "1":
-            tags += ",Babycare,Layette,Baby,Boy";
-            description += " for newborn boy";
-            break;
-          case "2":
-            tags += ",Babycare,Layette,Baby,Girl";
-            description += " for newborn girl";
-            break;
-          case "3":
-            tags += ",Baby,Boy";
-            description += " for baby boy";
-            break;
-          case "4":
-            tags += ",Baby,Girl";
-            description += " for baby girl";
-            break;
-          case "5":
-            tags += ",Mini,Boy";
-            description += " for boy";
-            break;
-          case "6":
-            tags += ",Mini,Girl";
-            description += " for girl";
-            break;
-          case "7":
-            tags += ",Teen,Boy";
-            description += " for teen boy";
-            break;
-          case "8":
-            tags += ",Teen,Girl";
-            description += " for teen girl";
-            break;
-          default:
-            tags += ",Babycare";
-            break;
-        }
-
-        let code;
-
-        switch (id.length) {
-          case 2:
-            code = "000" + id;
-            break;
-          case 3:
-            code = "00" + id;
-            break;
-          case 4:
-            code = "0" + id;
-            break;
-          default:
-            code = id;
-            break;
-        }
-        let images = [];
-        const handle = slugify(`${name} ${code} ${color}`, "-")
-          .toLowerCase()
-          .replace(/"/g, "");
-
-        if (handle !== prevHandle) {
-          for (i in urlsArr) {
-            if (urlsArr[i].includes(`-${code}-0${colorCode}-`)) {
-              images.push(urlsArr[i]);
-            }
+          switch (family[0]) {
+            case "1":
+              tags += ",Babycare,Layette,Baby,Boy";
+              description += " for newborn boy";
+              break;
+            case "2":
+              tags += ",Babycare,Layette,Baby,Girl";
+              description += " for newborn girl";
+              break;
+            case "3":
+              tags += ",Baby,Boy";
+              description += " for baby boy";
+              break;
+            case "4":
+              tags += ",Baby,Girl";
+              description += " for baby girl";
+              break;
+            case "5":
+              tags += ",Mini,Boy";
+              description += " for boy";
+              break;
+            case "6":
+              tags += ",Mini,Girl";
+              description += " for girl";
+              break;
+            case "7":
+              tags += ",Teen,Boy";
+              description += " for teen boy";
+              break;
+            case "8":
+              tags += ",Teen,Girl";
+              description += " for teen girl";
+              break;
+            default:
+              tags += ",Babycare";
+              break;
           }
 
-          products.push({
-            handle,
-            description,
-            size,
-            color,
-            price,
-            tags,
-            code,
-            barcode,
-            images,
-          });
+          let code;
 
-          // console.log("--------");
-          // console.log(handle, size);
-          // console.log(images);
-          prevHandle = handle;
-        } else {
-          // console.log(handle, size);
-          products.push({
-            handle,
-            description,
-            size,
-            color,
-            price,
-            tags,
-            code,
-            barcode,
-          });
+          switch (id.length) {
+            case 2:
+              code = "000" + id;
+              break;
+            case 3:
+              code = "00" + id;
+              break;
+            case 4:
+              code = "0" + id;
+              break;
+            default:
+              code = id;
+              break;
+          }
+          let images = [];
+          const handle = slugify(`${name} ${code} ${color}`, "-")
+            .toLowerCase()
+            .replace(/"/g, "");
+
+          if (handle !== prevHandle) {
+            for (i in urlsArr) {
+              if (urlsArr[i].includes(`-${code}-0${colorCode}-`)) {
+                images.push(urlsArr[i]);
+              }
+            }
+
+            products.push({
+              handle,
+              description,
+              size,
+              color,
+              price,
+              tags,
+              code,
+              barcode,
+              images,
+            });
+
+            // console.log("--------");
+            // console.log(handle, size);
+            // console.log(images);
+            prevHandle = handle;
+          } else {
+            // console.log(handle, size);
+            products.push({
+              handle,
+              description,
+              size,
+              color,
+              price,
+              tags,
+              code,
+              barcode,
+            });
+          }
+        } catch (e) {
+          return;
         }
       });
 
