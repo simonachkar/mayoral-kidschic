@@ -8,6 +8,7 @@ const {
   NURSING_BAGS,
   BOY_SUITS,
   BABY_SHOWER,
+  IN_GENERAL,
 } = require("./seo-descriptions");
 
 // Read CSV file
@@ -31,25 +32,32 @@ const readCSV = (path) => {
 // Change description according to the tag
 const getBoostedDescription = (row) => {
   const tags = row["Tags"];
-  const title = row["Title"];
+  const title = row["Title"].toLowerCase();
   let description = row["Body (HTML)"];
 
-  if (title.includes("Bag")) {
+  if (title.includes("bag")) {
     description += NURSING_BAGS;
+  }
+
+  if (title.includes("shoe")) {
+    description += DRESSY_SHOES;
   }
 
   if (tags.includes("Girl") && tags.includes("Dress")) {
     // Flower girl, Dressy Shoes
-    description += FLOWER_GIRL + DRESSY_SHOES;
+    description += FLOWER_GIRL;
   } else if (tags.includes("Babycare")) {
     // Baby Shower Gift
     description += BABY_SHOWER;
   } else if (tags.includes("Boy")) {
     // Boys Suites
-    description += BOY_SUITS;
+    description += BOY_SUITS + IN_GENERAL;
   } else if (tags.includes("Girl")) {
     // First Communion / Baptism / Christening Dresses
-    description += CHURCH_DRESSES;
+    description += CHURCH_DRESSES + IN_GENERAL;
+  } else if (tags) {
+    // this is to avoid empty rows
+    description += IN_GENERAL;
   }
 
   return description;

@@ -5,6 +5,7 @@ const CHURCH_DRESSES = `<p> CHURCH_DRESSES </p>`;
 const NURSING_BAGS = `<p> NURSING_BAGS </p>`;
 const BOY_SUITS = `<p> BOY_SUITS </p>`;
 const BABY_SHOWER = `<p> BABY_SHOWER</p>`;
+const IN_GENERAL = `<p> IN_GENERAL</p>`;
 
 module.exports = {
   FLOWER_GIRL,
@@ -13,4 +14,5 @@ module.exports = {
   NURSING_BAGS,
   BOY_SUITS,
   BABY_SHOWER,
+  IN_GENERAL,
 };

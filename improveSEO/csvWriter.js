@@ -1,7 +1,7 @@
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 const csvWriter = createCsvWriter({
-  path: "out.csv",
+  path: "./improveSEO/out.csv",
   header: [
     { id: "Handle", title: "Handle" },
     { id: "Title", title: "Title" },
