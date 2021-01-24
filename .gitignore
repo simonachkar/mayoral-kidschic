@@ -1,8 +1,7 @@
 # Misc
 config.sh
-urls.txt
-data.csv
-out.csv
+*.txt
+*.csv
 
 # Logs
 logs
