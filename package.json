@@ -21,6 +21,8 @@
   "dependencies": {
     "cloudinary": "^1.23.0",
     "csv-parser": "^2.3.3",
+    "csv-writer": "^1.6.0",
+    "prettier": "^2.2.1",
     "slugify": "^1.4.5"
   }
 }
