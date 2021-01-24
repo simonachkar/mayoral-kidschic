@@ -9,7 +9,7 @@ const {
   BOY_SUITS,
   BABY_SHOWER,
   IN_GENERAL,
-} = require("./seo-descriptions");
+} = require("./descriptions.data");
 
 // Read CSV file
 const readCSV = (path) => {
@@ -20,7 +20,6 @@ const readCSV = (path) => {
         .pipe(csv())
         .on("data", (data) => results.push(data))
         .on("end", () => {
-          console.log(`Done reading ${path}`);
           resolve(results);
         });
     } catch (error) {
@@ -63,11 +62,10 @@ const getBoostedDescription = (row) => {
   return description;
 };
 
-// Write to a new CSV
-
 const main = async () => {
-  const results = await readCSV("./improveSEO/data.csv");
+  console.log("-- Improving SEO mazarfakars! --");
 
+  const results = await readCSV("./improveSEO/data.csv");
   results.forEach((row) => {
     const newDescription = getBoostedDescription(row);
     if (newDescription) {
@@ -75,9 +73,10 @@ const main = async () => {
     }
   });
 
+  // Write to a new CSV
   csvWriter
     .writeRecords(results)
-    .then(() => console.log("The CSV file was written successfully"));
+    .then(() => console.log("the csv file was written successfully -- DONE"));
 };
 
 main();
