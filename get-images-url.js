@@ -16,7 +16,9 @@ const getImgs = (nextC) => {
       if (error) throw error;
       else {
         result.resources.map((d) => {
-          fs.appendFile("urls.txt", d.secure_url + "\n", (err) => {
+          let url = d.secure_url;
+          url = url.replace("/upload/", "/upload/t_shopify/");
+          fs.appendFile("urls.txt", url + "\n", (err) => {
             if (err) throw err;
           });
         });
