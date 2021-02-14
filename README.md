@@ -15,6 +15,7 @@ Script to export Mayoral products and fetch images from Cloudinary and prepare S
 - Get the csv file for the order wanted
 - Place the file at the root of this project and call it `data.csv`
 - Make sure the seperators are `,` and the header of the csv file is set properly
+- Remove every odd charachter (e.g. `"`)
 - The file should look something like this
 ```
 Style code,Color code,Size,Family,Subfamily,Color name,Style description,Cost Price Barcode,Size key 

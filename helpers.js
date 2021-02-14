@@ -52,6 +52,11 @@ const getTPSize = (size) => {
   }
 };
 
+const getVariants = (vendor, size, tags) => {
+  if (vendor === "Tutto Piccolo") return getTPVariants(size);
+  else return getMayoralVariants(size, tags);
+};
+
 const getTPVariants = (size) => {
   let variants = [];
 
@@ -117,6 +122,105 @@ const getTPVariants = (size) => {
   return variants;
 };
 
+const getMayoralVariants = (size, tags) => {
+  let variants = [];
+
+  if (tags.includes("Layette")) {
+    variants = [
+      {
+        size: "0-1 month",
+        quantity: 0,
+      },
+      {
+        size: "1-2 months",
+        quantity: 0,
+      },
+      {
+        size: "2-4 months",
+        quantity: 0,
+      },
+      {
+        size: "4-6 months",
+        quantity: 0,
+      },
+      {
+        size: "6-9 months",
+        quantity: 0,
+      },
+      {
+        size: "12 months",
+        quantity: 0,
+      },
+      {
+        size: "18 months",
+        quantity: 0,
+      },
+    ];
+  } else if (tags.includes("Baby")) {
+    variants = [
+      {
+        size: "6 months",
+        quantity: 0,
+      },
+      {
+        size: "9 months",
+        quantity: 0,
+      },
+      {
+        size: "12 months",
+        quantity: 0,
+      },
+      {
+        size: "24 months",
+        quantity: 0,
+      },
+      {
+        size: "36 months",
+        quantity: 0,
+      },
+    ];
+  } else {
+    size.map((s) => {
+      variants.push({
+        size: s,
+        quantity: 0,
+      });
+    });
+  }
+  return variants;
+};
+
+const fixMayoralPrice = (price) => {
+  let newPrice;
+  newPrice = Math.round((price / 100) * 2 + 2.99);
+  const priceMod = newPrice % 10;
+  if (priceMod === 4 || priceMod === 2 || priceMod === 7 || priceMod === 9) {
+    return newPrice + 0.99;
+  } else return newPrice + 1.99;
+};
+
+const getMayoralTitle = (description, tags, color) => {
+  let title = description;
+
+  if (tags.includes("Mini")) {
+    if (tags.includes("Girl")) title += " for Girl";
+    if (tags.includes("Boy")) title += " for Boy";
+  } else if (tags.includes("Baby")) {
+    if (tags.includes("Girl")) title += " for Baby Girl";
+    if (tags.includes("Boy")) title += " for Baby Boy";
+  } else if (tags.includes("Layette")) {
+    if (tags.includes("Girl")) title += " for Newborn Girl";
+    if (tags.includes("Boy")) title += " for Newborn Boy";
+  } else {
+    if (tags.includes("Girl")) title += " for Teen Girl";
+    if (tags.includes("Boy")) title += " for Teen Boy";
+  }
+
+  title += ` ${color}`;
+
+  return title;
+};
+
 // SimonsCode is for sorting
 const writeToShopifyCsv = async (products) => {
   console.log("📝  Writing to csv broski");
@@ -140,7 +244,7 @@ const writeToShopifyCsv = async (products) => {
       images,
     } = product;
 
-    const variants = getTPVariants(size);
+    const variants = getVariants(vendor, size, tags);
 
     const firstImg = images.length ? images[0] : "";
 
@@ -179,4 +283,6 @@ module.exports = {
   writeToShopifyCsv,
   getTPTags,
   getTPSize,
+  fixMayoralPrice,
+  getMayoralTitle,
 };
